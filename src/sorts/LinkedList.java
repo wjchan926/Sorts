@@ -1,6 +1,6 @@
 package sorts;
 
-public class LinkedList<T> {
+public class LinkedList<T>{
 
 	private Node<T> head;
 	private int size;
@@ -30,6 +30,15 @@ public class LinkedList<T> {
 	public Node<T> getHead() {
 		return head;
 	}
+	
+	/**
+	 * Gets the first element of the list
+	 * 
+	 * @return the first Node in the list
+	 */
+	public void setHead(Node<T> node) {
+		head = node;
+	}
 
 	/**
 	 * Adds an element to the end of the list. Increases the size of the list.
@@ -41,6 +50,32 @@ public class LinkedList<T> {
 		Node<T> tempNode = new Node<T>();
 		tempNode.setData(t);
 		tempNode.setNext(null);
+		
+		if (head == null){
+			head = tempNode;						
+		} else{
+			Node<T> currentNode = new Node<T>();
+			currentNode = head;
+			while (currentNode.getNext() != null){
+				currentNode = currentNode.getNext();
+			}
+			
+			currentNode.setNext(tempNode);				
+		}
+		
+		size++;
+		
+	}
+	
+	/**
+	 * Adds an element to the end of the list. Increases the size of the list.
+	 * 
+	 * @param t
+	 *            element to add to the list
+	 */
+	public void append(Node<T> node) {
+		Node<T> tempNode = new Node<T>();
+		tempNode = node;
 		
 		if (head == null){
 			head = tempNode;						
@@ -96,8 +131,8 @@ public class LinkedList<T> {
 		} else {
 			while (currentNode != null) {
 				sb.append(currentNode.getData());
-			//	sb.append("\r\n");	
-				sb.append(" ");	
+				sb.append("\r\n");	
+				//sb.append(" ");	
 				currentNode = currentNode.getNext();
 			}			
 		}

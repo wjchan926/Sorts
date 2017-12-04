@@ -6,25 +6,25 @@ public final class QuickSort {
 	private static long totalRunTime;
 	private static long startTime;
 
-	public static void quickSort(int[] array) {	
+	public static void quickSort(int[] array) {
 		arr = array;
-		startTime = System.nanoTime();		
+		startTime = System.nanoTime();
 		quickSort(0, arr.length - 1);
-		totalRunTime = System.nanoTime() - startTime;	
+		totalRunTime = System.nanoTime() - startTime;
 	}
 
 	public static void quickSort100(int[] array) {
 		arr = array;
 		startTime = System.nanoTime();
 		quickSort(0, arr.length - 1, 100);
-		totalRunTime = System.nanoTime() - startTime;	
+		totalRunTime = System.nanoTime() - startTime;
 	}
 
 	public static void quickSort50(int[] array) {
 		arr = array;
 		startTime = System.nanoTime();
 		quickSort(0, arr.length - 1, 50);
-		totalRunTime = System.nanoTime() - startTime;	
+		totalRunTime = System.nanoTime() - startTime;
 	}
 
 	public static void quickSortMed3(int[] array) {
@@ -34,7 +34,6 @@ public final class QuickSort {
 		totalRunTime = System.nanoTime() - startTime;
 	}
 
-	
 	private static void quickSort(int start, int end) {
 
 		if (start < end) {
@@ -60,9 +59,9 @@ public final class QuickSort {
 
 	private static void quickSortMed3(int start, int end) {
 
-		int median = medianOfThree(start, (start + end)/2, end);
+		int median = medianOfThree(start, (start + end) / 2, end);
 		exchange(start, median);
-		
+
 		int pivotIndex = partition(start, end);
 
 		quickSortMed3(start, pivotIndex - 1);
@@ -101,10 +100,12 @@ public final class QuickSort {
 		for (int i = start + 1; i <= end; i++) {
 			int current = arr[i];
 			int j = i - 1;
-			while (j > 0 && arr[j] > current) {
+			
+			while (j >= 0 && arr[j] > current) {
 				arr[j + 1] = arr[j];
 				j--;
 			}
+			
 			arr[j + 1] = current;
 		}
 	}
@@ -114,8 +115,8 @@ public final class QuickSort {
 				: (arr[k] < arr[j] ? j : arr[k] < arr[i] ? k : i));
 
 	}
-	
-	public static long getTotalRunTime(){
+
+	public static long getTotalRunTime() {
 		return totalRunTime;
 	}
 

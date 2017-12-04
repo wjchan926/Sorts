@@ -2,8 +2,8 @@ package sorts;
 
 public class Queue {
 
-	private Node<Integer> head;
-	private Node<Integer> tail;
+	private Node<LinkedList<Integer>> head;
+	private Node<LinkedList<Integer>> tail;
 	private int size;
 
 	Queue() {
@@ -16,12 +16,13 @@ public class Queue {
 		return size == 0;
 	}
 
-	public void enqueue(Node<Integer> node) {
+	public void enqueue(LinkedList<Integer> linkedList) {
 
-		Node<Integer> tempNode = tail;
+		Node<LinkedList<Integer>> tempNode = new Node<LinkedList<Integer>>();
+		tempNode = tail;
 
-		tail = new Node<Integer>();
-		tail.setData(node.getData());
+		tail = new Node<LinkedList<Integer>>();
+		tail.setData(linkedList);
 		tail.setNext(null);
 
 		if (isEmpty()) {
@@ -33,37 +34,38 @@ public class Queue {
 		size++;
 	}
 
-	public Node<Integer> dequeue() {
-		Node<Integer> tempNode = head;
+	public Node<LinkedList<Integer>> dequeue() {
+		Node<LinkedList<Integer>> tempNode = new Node<LinkedList<Integer>>();
+		tempNode = head;
 
 		head = head.getNext();
 		if (isEmpty()) {
 			tail = null;
 		}
 		size--;
-		
+
 		return tempNode;
 	}
 
 	public int getSize() {
 		return size;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		Node<Integer> currentNode = head;
+		Node<LinkedList<Integer>> currentNode = head;
 
 		if (isEmpty()) {
 			// No Data
 			return sb.append("No Data.").toString();
 		} else {
 			while (currentNode != null) {
-				sb.append(currentNode.getData());
-			//	sb.append("\r\n");	
-				sb.append(" ");	
+				sb.append(currentNode.getData().getHead().getData());
+				// sb.append("\r\n");
+				sb.append(" ");
 				currentNode = currentNode.getNext();
-			}			
+			}
 		}
 
 		return sb.toString().trim();
