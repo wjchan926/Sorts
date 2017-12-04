@@ -1,6 +1,6 @@
 package sorts;
 
-public class QuickSort {
+public final class QuickSort {
 
 	private static int[] arr;
 	private static long totalRunTime;
