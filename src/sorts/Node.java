@@ -1,5 +1,12 @@
 package sorts;
 
+/**
+ * Generic Node class.
+ * 
+ * @author Wesley
+ *
+ * @param <T> Generic Datatype
+ */
 public class Node<T> {
 	private T data;
 	private Node<T> next;
@@ -50,9 +57,14 @@ public class Node<T> {
 		next = node;
 	}		 
 	
+	/**
+	 * Overridden toString() method of debugging purposes.
+	 */
 	@Override
 	public String toString() {
-		return "" + data;
+		StringBuffer sb = new StringBuffer();
+		sb.append(data);
+		return sb.toString();
 	}
 
 }

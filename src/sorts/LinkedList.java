@@ -1,25 +1,23 @@
 package sorts;
 
-public class LinkedList<T>{
+/**
+ * A Generic Linked List class. Many of the typical LinkedList methods are left
+ * out since they were not being used.
+ * 
+ * @author Wesley
+ *
+ * @param <T>
+ *            Generic Datatype
+ */
+public class LinkedList<T> {
 
 	private Node<T> head;
-	private int size;
 
 	/**
-	 * Default constructor for PathList class.
+	 * Default constructor for LinkedList class.
 	 */
 	LinkedList() {
 		head = null;
-		size = 0;
-	}
-
-	/**
-	 * Gets the size of the list.
-	 * 
-	 * @return the list size as an int
-	 */
-	public int getSize() {
-		return size;
 	}
 
 	/**
@@ -30,11 +28,10 @@ public class LinkedList<T>{
 	public Node<T> getHead() {
 		return head;
 	}
-	
+
 	/**
-	 * Gets the first element of the list
-	 * 
-	 * @return the first Node in the list
+	 * Sets the first element of the list
+	 * @param node Sets the first element of the list to this node
 	 */
 	public void setHead(Node<T> node) {
 		head = node;
@@ -50,47 +47,43 @@ public class LinkedList<T>{
 		Node<T> tempNode = new Node<T>();
 		tempNode.setData(t);
 		tempNode.setNext(null);
-		
-		if (head == null){
-			head = tempNode;						
-		} else{
+
+		if (head == null) {
+			head = tempNode;
+		} else {
 			Node<T> currentNode = new Node<T>();
 			currentNode = head;
-			while (currentNode.getNext() != null){
+			while (currentNode.getNext() != null) {
 				currentNode = currentNode.getNext();
 			}
-			
-			currentNode.setNext(tempNode);				
+
+			currentNode.setNext(tempNode);
 		}
-		
-		size++;
-		
+
 	}
-	
+
 	/**
 	 * Adds an element to the end of the list. Increases the size of the list.
 	 * 
-	 * @param t
+	 * @param node
 	 *            element to add to the list
 	 */
 	public void append(Node<T> node) {
 		Node<T> tempNode = new Node<T>();
 		tempNode = node;
-		
-		if (head == null){
-			head = tempNode;						
-		} else{
+
+		if (head == null) {
+			head = tempNode;
+		} else {
 			Node<T> currentNode = new Node<T>();
 			currentNode = head;
-			while (currentNode.getNext() != null){
+			while (currentNode.getNext() != null) {
 				currentNode = currentNode.getNext();
 			}
-			
-			currentNode.setNext(tempNode);				
+
+			currentNode.setNext(tempNode);
 		}
-		
-		size++;
-		
+
 	}
 
 	/**
@@ -112,29 +105,22 @@ public class LinkedList<T>{
 	}
 
 	/**
-	 * Checks if the list is empty
-	 * 
-	 * @return true of the list is empty, false otherwise
+	 * Overrides the toString() method. Allows printing of the List.
 	 */
-	private boolean isEmpty() {
-		return size == 0;
-	}
-
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		Node<T> currentNode = head;
 
-		if (isEmpty()) {
+		if (head == null) {
 			// No Data
 			return sb.append("No Data to sort.").toString();
 		} else {
 			while (currentNode != null) {
 				sb.append(currentNode.getData());
-				sb.append("\r\n");	
-				//sb.append(" ");	
+				sb.append("\r\n");
 				currentNode = currentNode.getNext();
-			}			
+			}
 		}
 
 		return sb.toString().trim();
