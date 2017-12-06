@@ -126,6 +126,12 @@ public final class MergeSort {
 	/**
 	 * This is the recursive merging method that combines 2 sublists in a sorted
 	 * order.
+	 * <p>
+	 * This code is modified code from void merge(int arr[], int l, int m, int
+	 * r) obtained from http://www.geeksforgeeks.org/merge-sort/
+	 * <p>
+	 * Original author: Rajat Mishra
+	 * 
 	 * 
 	 * @param node1
 	 *            Beginning of 1st Sublist
@@ -156,6 +162,10 @@ public final class MergeSort {
 		return sortedSub;
 	}
 
+	/**
+	 * Gets the total sort runtime
+	 * @return time it takes to sort elements
+	 */
 	public static long getTotalRunTime() {
 		return totalRunTime;
 	}

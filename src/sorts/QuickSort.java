@@ -77,7 +77,12 @@ public final class QuickSort {
 	}
 
 	/**
-	 * Recursive QuickSort method used by quickSort(int[] array)
+	 * Recursive QuickSort method used by quickSort(int[] array).
+	 * <p>
+	 * This code is modified code from void sort(int arr[], int low, int high)
+	 * obtained from http://www.geeksforgeeks.org/quick-sort/
+	 * <p>
+	 * Original author: Rajat Mishra
 	 * 
 	 * @param start
 	 *            beginning of list
@@ -119,7 +124,7 @@ public final class QuickSort {
 	}
 
 	/**
-	 * Recursive QuickSort method used by uickSortMed3(int[] array). Calculates
+	 * Recursive QuickSort method used by quickSortMed3(int[] array). Calculates
 	 * the median of 3 numbers as the pivot.
 	 * 
 	 * @param start
@@ -132,7 +137,9 @@ public final class QuickSort {
 		int n = end - start + 1;
 
 		if (n <= 2) {
-			insertionSort(start, end);
+			if (arr[start] > arr[end]) {
+				exchange(start, end);
+			}
 		} else {
 
 			int median = medianOfThree(start, start + n / 2, end);
@@ -149,9 +156,16 @@ public final class QuickSort {
 	 * The partition method puts the pivot in the correct position in the array.
 	 * It moves all elements smaller than the pivot before the pivot and all
 	 * elements larger than the pivot after the pivot.
+	 * <p>
+	 * This code is modified code from function int partition(int arr[], int
+	 * low, int high) obtained from http://www.geeksforgeeks.org/quick-sort/
+	 * <p>
+	 * Original author: Rajat Mishra
 	 * 
-	 * @param start beginning of sublist
-	 * @param end end of sublist
+	 * @param start
+	 *            beginning of sublist
+	 * @param end
+	 *            end of sublist
 	 * @return the index of the pivot
 	 */
 	private static int partition(int start, int end) {
@@ -178,8 +192,10 @@ public final class QuickSort {
 	/**
 	 * Switches 2 elements in the array
 	 * 
-	 * @param i first element to switch
-	 * @param j second element to switch
+	 * @param i
+	 *            first element to switch
+	 * @param j
+	 *            second element to switch
 	 */
 	private static void exchange(int i, int j) {
 		int temp = arr[i];
@@ -189,8 +205,11 @@ public final class QuickSort {
 
 	/**
 	 * Performs an insertion sort
-	 * @param start beginning of elements to sort
-	 * @param end last element to sort
+	 * 
+	 * @param start
+	 *            beginning of elements to sort
+	 * @param end
+	 *            last element to sort
 	 */
 	private static void insertionSort(int start, int end) {
 		for (int i = start + 1; i <= end; i++) {
@@ -209,9 +228,12 @@ public final class QuickSort {
 	/**
 	 * Determines the median of 3 numbers.
 	 * 
-	 * @param i first number
-	 * @param j second number
-	 * @param k third number
+	 * @param i
+	 *            first number
+	 * @param j
+	 *            second number
+	 * @param k
+	 *            third number
 	 * @return The median of the 3 input numbers.
 	 */
 	private static int medianOfThree(int i, int j, int k) {
@@ -222,6 +244,7 @@ public final class QuickSort {
 
 	/**
 	 * Gets the total time a sort takes.
+	 * 
 	 * @return time a sort takes
 	 */
 	public static long getTotalRunTime() {
